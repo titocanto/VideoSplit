@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Download Video Parts</title>
+</head>
+<body>
+	<h1>Download Video Parts</h1>
+	{% for part in parts %}
+		<a href="{% url 'download' filename=part %}">Part {{ forloop.counter }} ({{ part }})</a><br>
+	{% endfor %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Split Video</title>
+</head>
+<body>
+    <h1>Split Video</h1>
+    <form method="post" action="{% url 'AppVideoSplit' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Choose a video file to split:</label>
+        <input type="file" name="file" required><br><br>
+        <label>Enter the size of each part (in MB):</label>
+        <input type="number" name="chunk_size" required><br><br>
+        <input type="submit" value="Split">
+    </form>
+</body>
+</html>
