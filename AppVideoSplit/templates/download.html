@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Download Video Parts</title>
+    <title>Download Video Parts</title>
+    <!-- Incluindo o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+	<!-- Incluindo o Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+
+
+	<style>
+		.navbar-brand {
+			font-size: 1.5rem;
+		}
+
+		.navbar-nav {
+			margin: 0 auto;
+			font-size: 1.2rem;
+		}
+	</style>
+
 </head>
 <body>
-	<h1>Download Video Parts</h1>
-	{% for part in parts %}
-		<a href="{% url 'download' filename=part %}">Part {{ forloop.counter }} ({{ part }})</a><br>
-	{% endfor %}
+    <div class="container">
+		<h1 style="text-align: center; color:blue">Arquivos divididos</h1>
+		<br>
+		<br>
+		<div class="row justify-content-center">
+			{% for part in parts %}
+			<div class="col-6 col-sm-4 col-md-3 mb-3">
+				<div class="card">
+					<div class="card-body text-center">
+						<h5 class="card-title">Part {{ forloop.counter }}</h5>
+						<p class="card-text"><a href="{% url 'download' filename=part %}" download="{{ part }}">{{ part }}</a></p>
+						<a href="{% url 'download' filename=part %}" download="{{ part }}" class="btn btn-outline-primary">
+							<i class="bi bi-cloud-download"></i> Download
+						</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	
+	<nav class="navbar d-flex justify-content-center">
+		<a class="navbar-brand" href="{% url 'home' %}" style="font-size: smaller;">
+			<i class="bi bi-arrow-left"></i> Voltar
+		</a>
+	</nav> 
+    
 </body>
 </html>
+
